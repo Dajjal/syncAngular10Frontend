@@ -1,0 +1,27 @@
+{
+  "NAVIGATION": {
+    "HEADER": "Synchronize application from 1C to TOFI"
+  },
+  "LANGUAGES": {
+    "EN": "English",
+    "RU": "Russian",
+    "TITLE": "Language"
+  },
+  "AUTH": {
+    "TITLE": "Authentication",
+    "USER": "Username",
+    "USER_PLACEHOLDER": "for example admin",
+    "USER_EMPTY": "Enter username",
+    "PASSWORD": "Password",
+    "PASSWORD_PLACEHOLDER" : "for example admin",
+    "PASSWORD_EMPTY": "Enter user password",
+    "LOGIN": "Login"
+  },
+  "FILED": {
+    "CLEAR": "Clear"
+  },
+  "ADMIN": {
+    "PANEL": "Administrator panel",
+    "EXIT": "Exit"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "NAVIGATION": {
+    "HEADER": "Синхранизатор данных с 1С в ТОФИ"
+  },
+  "LANGUAGES": {
+    "EN": "Английский",
+    "RU": "Русский",
+    "TITLE": "Язык"
+  },
+  "AUTH": {
+    "TITLE": "Авторизация",
+    "USER": "Имя пользователя",
+    "USER_PLACEHOLDER": "к примеру admin",
+    "USER_EMPTY": "Введите имя пользователя",
+    "PASSWORD": "Пароль",
+    "PASSWORD_PLACEHOLDER" : "к примеру admin",
+    "PASSWORD_EMPTY": "Введите пароль от пользователя",
+    "LOGIN": "Войти"
+  },
+  "FILED": {
+    "CLEAR": "Очистить"
+  },
+  "ADMIN": {
+    "PANEL": "Панель Админимстратора",
+    "EXIT": "Выход"
+  }
+}

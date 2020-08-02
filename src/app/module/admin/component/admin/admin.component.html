@@ -1,0 +1,28 @@
+<div class="custom-toolbar">
+  <button
+    kendoButton
+    icon="layout"
+    look="flat"
+    (click)="drawer.toggle()">
+    <span class="mail-box">{{ 'ADMIN.PANEL' | translate }}</span>
+  </button>
+</div>
+<kendo-drawer-container>
+  <kendo-drawer
+    #drawer
+    [items]="items"
+    [mode]="'push'"
+    [mini]="true"
+    [(expanded)]="expanded"
+    (select)="onSelect($event)">
+    <ng-template kendoDrawerItemTemplate let-item>
+      <div class="k-drawer-link" [routerLink]="item['path']">
+        <span class="k-icon item-icon {{ item['icon'] }}"></span>
+        <div class="item-descr-wrap" *ngIf="expanded">{{ item['text'] | translate }}</div>
+      </div>
+    </ng-template>
+  </kendo-drawer>
+  <kendo-drawer-content>
+    <router-outlet></router-outlet>
+  </kendo-drawer-content>
+</kendo-drawer-container>
