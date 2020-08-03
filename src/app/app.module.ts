@@ -22,7 +22,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
   declarations: [
     AppComponent,
     PageNotFoundComponent,
-    AuthComponent
+    AuthComponent,
   ],
   imports: [
     BrowserModule,

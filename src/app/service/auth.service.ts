@@ -13,7 +13,7 @@ export class AuthService {
   private _isLoggedIn = false;
   get isLoggedIn(): boolean {
     const store = localStorage.getItem('sync_logged');
-    console.log('sync_logged', store);
+    console.log('authorized:', store);
     if (!!store) {
       const logged = Boolean(store);
       if (logged) {

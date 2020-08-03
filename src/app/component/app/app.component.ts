@@ -10,7 +10,6 @@ import {TranslateService} from '@ngx-translate/core';
 export class AppComponent {
   constructor(private translateService: TranslateService) {
     const lang = localStorage.getItem('sync_lang');
-    console.log('lang', lang);
     if (!!lang) {
       this.translateService.setDefaultLang(lang);
     } else {

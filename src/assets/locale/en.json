@@ -22,6 +22,10 @@
   },
   "ADMIN": {
     "PANEL": "Administrator panel",
-    "EXIT": "Exit"
+    "EXIT": "Exit",
+
+    "PAGE": "Admin",
+    "DASHBOARD": "Dashboard",
+    "SHEDULER": "Sheduler"
   }
 }

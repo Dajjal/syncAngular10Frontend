@@ -1,28 +1,75 @@
-<div class="custom-toolbar">
+<section class="custom-toolbar">
   <button
     kendoButton
     icon="layout"
-    look="flat"
+    look="outline"
     (click)="drawer.toggle()">
-    <span class="mail-box">{{ 'ADMIN.PANEL' | translate }}</span>
   </button>
-</div>
+  <div class="mr-auto"></div>
+  <div class="pt-1 pb-1 pr-3">
+    <label class="mr-2">{{ 'LANGUAGES.TITLE' | translate }}</label>
+    <kendo-dropdownlist [data]="languages"
+                        textField="title"
+                        valueField="id"
+                        [valuePrimitive]="true"
+                        (valueChange)="changeLocale()"
+                        [(ngModel)]="selectedLanguage" class="w-auto">
+      <ng-template kendoDropDownListValueTemplate let-dataItem>
+        {{ dataItem?.title | translate }}
+      </ng-template>
+      <ng-template kendoDropDownListItemTemplate let-dataItem>
+        {{ dataItem?.title | translate }}
+      </ng-template>
+    </kendo-dropdownlist>
+  </div>
+</section>
 <kendo-drawer-container>
   <kendo-drawer
     #drawer
     [items]="items"
-    [mode]="'push'"
+    mode="push"
     [mini]="true"
+    [autoCollapse]="true"
     [(expanded)]="expanded"
     (select)="onSelect($event)">
+    <ng-template kendoDrawerHeaderTemplate>
+      <div *ngIf="expanded" style="text-align: center; border-bottom: 1px solid #00000014">
+        <label style="font-size: 1.25rem">{{ 'ADMIN.PANEL' | translate }}</label>
+      </div>
+    </ng-template>
     <ng-template kendoDrawerItemTemplate let-item>
       <div class="k-drawer-link" [routerLink]="item['path']">
         <span class="k-icon item-icon {{ item['icon'] }}"></span>
         <div class="item-descr-wrap" *ngIf="expanded">{{ item['text'] | translate }}</div>
       </div>
     </ng-template>
+    <ng-template kendoDrawerFooterTemplate>
+      <div style="text-align: center;">
+        <button class="k-button" (click)="drawer.toggle()">Collapse</button>
+      </div>
+    </ng-template>
+
+    <!--<ng-template kendoDrawerTemplate>
+      <kendoDrawerHeaderTemplate></kendoDrawerHeaderTemplate>
+      <form class="k-form" *ngIf="expanded">
+        <label class="k-form-field">
+          <span>First Name</span>
+          <input class="k-textbox" placeholder="Your Name" />
+        </label>
+        <label class="k-form-field">
+          <span>Last Name</span>
+          <input class="k-textbox" placeholder="Your Last Name" />
+        </label>
+        <label class="k-form-field">
+          <button type="button" class="k-button" (click)="drawer.toggle()">Submit</button>
+        </label>
+      </form>
+    </ng-template>-->
   </kendo-drawer>
   <kendo-drawer-content>
-    <router-outlet></router-outlet>
+    <app-breadcrumbs></app-breadcrumbs>
+    <section class="p-3">
+      <router-outlet></router-outlet>
+    </section>
   </kendo-drawer-content>
 </kendo-drawer-container>

@@ -1,0 +1,36 @@
+.breadcrumb {
+  transition: left .25s,right .25s,width .25s;
+}
+.breadcrumb {
+  position: relative;
+  border-radius: 0;
+  //border-bottom: 1px solid #c8ced3;
+  border-bottom: 1px solid #00000014;
+}
+.breadcrumb {
+  //padding: .2rem 1rem;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  //padding: .75rem 1rem;
+  margin-bottom: 0;
+  list-style: none;
+  //background-color: #20a8d8;
+  background-color: #f6f6f6;
+
+  .breadcrumb-item {
+    display: list-item;
+    //font-size: 0.8rem;
+
+    a {
+      color: #709adf;
+      text-decoration: none;
+      background-color: transparent;
+    }
+  }
+
+  .breadcrumb-item.active {
+    color: #73818f;
+  }
+}

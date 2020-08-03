@@ -2,15 +2,36 @@
   width: 100%;
   background-color: #f6f6f6;
   line-height: 10px;
-  border-bottom: inset;
+  border-bottom: 1px solid #00000014;
   border-bottom-width: 1px;
-  padding: 3px 8px;
+  //padding: 3px 8px;
   color: #656565;
-}
+  height: 40px;
+  display: flex;
 
-.mail-box {
-  font-weight: bold;
-  font-size: 17px;
+  button {
+    height: 40px;
+    width: 50px;
+    border: none;
+    border-right: 1px solid #00000014;
+    border-radius: 0;
+
+    span {
+      font-size: 20px;
+    }
+  }
+
+  /*button.k-state-focused {
+    border-top-color: transparent;
+    border-top-width: 0;
+    border-bottom-color: transparent;
+    border-bottom-width: 0;
+    border-left-color: transparent;
+    border-left-width: 0;
+    border-right-color: transparent;
+    border-right-width: 0;
+    outline-color: transparent;
+  }*/
 }
 
 kendo-drawer-container {

@@ -4,19 +4,22 @@ import {AdminComponent} from './component/admin/admin.component';
 import {AdminRoutingModule} from './admin-routing.module';
 import {SharedModule} from '../shared/shared.module';
 import {TranslateModule} from '@ngx-translate/core';
-import {PageNotFoundComponent} from '../../component/page-not-found/page-not-found.component';
+import {DashboardComponent} from './component/dashboard/dashboard.component';
+import {ShedulerComponent} from './component/sheduler/sheduler.component';
 
 
 @NgModule({
   declarations: [
-    AdminComponent
+    AdminComponent,
+    DashboardComponent,
+    ShedulerComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     AdminRoutingModule,
-    TranslateModule
-  ]
+  ],
+  bootstrap: [AdminComponent]
 })
 export class AdminModule {
 }
