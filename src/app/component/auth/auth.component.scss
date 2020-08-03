@@ -1,4 +1,14 @@
-.header-title {
-  height: 30px;
-  line-height: 30px
+kendo-card-header {
+
+  .header-title {
+    height: 30px;
+    line-height: 30px
+  }
+
+  .float-right {
+    label {
+      line-height: 30px;
+    }
+  }
+
 }
