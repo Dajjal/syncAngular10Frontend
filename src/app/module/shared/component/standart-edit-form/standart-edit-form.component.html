@@ -1,0 +1,101 @@
+<kendo-dialog *ngIf="active" (close)="closeForm()">
+
+  <kendo-dialog-titlebar>
+    {{ (isNew ? 'TABLE.CREATE' : 'TABLE.UPDATE') | translate }}
+  </kendo-dialog-titlebar>
+
+  <form novalidate [formGroup]="editForm" class="app-edit-form k-form">
+
+    <!--<fieldset class="m-0 border-0" *ngIf="integrated">
+
+      <div class="form-group row">
+        <div class="col-md-5">
+          <label for="code" class="control-label">{{ 'base.Code' | translate }}:</label>
+        </div>
+        <div class="col-md-7">
+          <input type="text" class="k-textbox w-100" formControlName="code"/>
+        </div>
+      </div>
+
+    </fieldset>-->
+
+    <fieldset class="m-0">
+      <legend>{{ 'TABLE.NAME' | translate }}</legend>
+
+      <div class="form-group row">
+        <div class="col-md-5">
+          <label for="name" class="control-label">{{ 'TABLE.NAME' | translate }}:
+            <span class="k-required">*</span>
+          </label>
+        </div>
+        <div class="col-md-7">
+          <input type="text" class="k-textbox w-100" formControlName="name"/>
+        </div>
+        <div class="col-md-12 flex-center">
+          <div class="k-tooltip k-tooltip-validation"
+                   [hidden]="editForm.controls.name.valid || editForm.controls.name.pristine">
+            {{ 'base.GridName' | translate }} {{ 'base.NameKZ' | translate }} {{ 'base.Required' | translate }}!
+          </div>
+        </div>
+      </div>
+
+      <!--<div class="form-group row">
+        <div class="col-md-5">
+          <label for="name_qz" class="control-label">{{ 'base.NameQZ' | translate }}: <span class="k-required">*</span></label>
+        </div>
+        <div class="col-md-7">
+          <input type="text" class="k-textbox w-100" formControlName="name_qz"/>
+        </div>
+        <div class="col-md-12 flex-center">
+          <div class="k-tooltip k-tooltip-validation"
+                   [hidden]="editForm.controls.name_qz.valid || editForm.controls.name_qz.pristine">
+            {{ 'base.GridName' | translate }} {{ 'base.NameQZ' | translate }} {{ 'base.Required' | translate }}!
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-5">
+          <label for="name_ru" class="control-label">{{ 'base.NameRU' | translate }}: <span class="k-required">*</span></label>
+        </div>
+        <div class="col-md-7">
+          <input type="text" class="k-textbox w-100" formControlName="name_ru"/>
+        </div>
+        <div class="col-md-12 flex-center">
+          <div class="k-tooltip k-tooltip-validation"
+                   [hidden]="editForm.controls.name_ru.valid || editForm.controls.name_ru.pristine">
+            {{ 'base.GridName' | translate }} {{ 'base.NameRU' | translate }} {{ 'base.Required' | translate }}!
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-5">
+          <label for="name_en" class="control-label">{{ 'base.NameEN' | translate }}: <span class="k-required">*</span></label>
+        </div>
+        <div class="col-md-7">
+          <input type="text" class="k-textbox w-100" formControlName="name_en"/>
+        </div>
+        <div class="col-md-12 flex-center">
+          <div class="k-tooltip k-tooltip-validation"
+                   [hidden]="editForm.controls.name_en.valid || editForm.controls.name_en.pristine">
+            {{ 'base.GridName' | translate }} {{ 'base.NameEN' | translate }} {{ 'base.Required' | translate }}!
+          </div>
+        </div>
+      </div>-->
+
+    </fieldset>
+
+  </form>
+
+  <kendo-dialog-actions>
+    <button class="k-button"
+            (click)="onCancel($event)">{{ 'base.Cancel' | translate }}
+    </button>
+    <button class="k-button k-primary"
+            (click)="onSave($event)"
+            [disabled]="!editForm.valid">{{ 'base.Save' | translate }}
+    </button>
+  </kendo-dialog-actions>
+
+</kendo-dialog>

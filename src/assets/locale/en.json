@@ -13,7 +13,7 @@
     "USER_PLACEHOLDER": "for example admin",
     "USER_EMPTY": "Enter username",
     "PASSWORD": "Password",
-    "PASSWORD_PLACEHOLDER" : "for example admin",
+    "PASSWORD_PLACEHOLDER": "for example admin",
     "PASSWORD_EMPTY": "Enter user password",
     "LOGIN": "Login"
   },
@@ -23,9 +23,27 @@
   "ADMIN": {
     "PANEL": "Administrator panel",
     "EXIT": "Exit",
-
     "PAGE": "Admin",
     "DASHBOARD": "Dashboard",
-    "SHEDULER": "Sheduler"
+    "SHEDULER": "Sheduler",
+    "USERS": {
+      "TITLE": "Users"
+    },
+    "ROLES": {
+      "TITLE": "Roles"
+    }
+  },
+  "MESSAGES": {
+    "NO_DATA": "No data"
+  },
+  "TABLE": {
+    "ID": "ID",
+    "NAME": "Name",
+
+    "CREATE": "Create",
+    "UPDATE": "Update",
+    "DELETE": "Delete",
+    "EXPORT_TO_PDF": "Export to PDF",
+    "EXPORT_TO_EXCEL": "Export to Excel"
   }
 }

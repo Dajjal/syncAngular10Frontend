@@ -39,7 +39,11 @@
     </ng-template>
     <ng-template kendoDrawerItemTemplate let-item>
       <div class="k-drawer-link" [routerLink]="item['path']">
-        <span class="k-icon item-icon {{ item['icon'] }}"></span>
+        <i class="{{ item['icon'] }}"></i>
+<!--        <span class="k-icon item-icon">-->
+<!--          <fa-icon icon="{{ item['icon'] }}"></fa-icon>-->
+<!--        </span>-->
+
         <div class="item-descr-wrap" *ngIf="expanded">{{ item['text'] | translate }}</div>
       </div>
     </ng-template>
@@ -48,27 +52,10 @@
         <button class="k-button" (click)="drawer.toggle()">Collapse</button>
       </div>
     </ng-template>
-
-    <!--<ng-template kendoDrawerTemplate>
-      <kendoDrawerHeaderTemplate></kendoDrawerHeaderTemplate>
-      <form class="k-form" *ngIf="expanded">
-        <label class="k-form-field">
-          <span>First Name</span>
-          <input class="k-textbox" placeholder="Your Name" />
-        </label>
-        <label class="k-form-field">
-          <span>Last Name</span>
-          <input class="k-textbox" placeholder="Your Last Name" />
-        </label>
-        <label class="k-form-field">
-          <button type="button" class="k-button" (click)="drawer.toggle()">Submit</button>
-        </label>
-      </form>
-    </ng-template>-->
   </kendo-drawer>
   <kendo-drawer-content>
     <app-breadcrumbs></app-breadcrumbs>
-    <section class="p-3">
+    <section class="content p-3">
       <router-outlet></router-outlet>
     </section>
   </kendo-drawer-content>

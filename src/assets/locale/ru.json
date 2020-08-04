@@ -13,7 +13,7 @@
     "USER_PLACEHOLDER": "к примеру admin",
     "USER_EMPTY": "Введите имя пользователя",
     "PASSWORD": "Пароль",
-    "PASSWORD_PLACEHOLDER" : "к примеру admin",
+    "PASSWORD_PLACEHOLDER": "к примеру admin",
     "PASSWORD_EMPTY": "Введите пароль от пользователя",
     "LOGIN": "Войти"
   },
@@ -23,9 +23,27 @@
   "ADMIN": {
     "PANEL": "Панель Админимстратора",
     "EXIT": "Выход",
-
     "PAGE": "Админка",
     "DASHBOARD": "Приборная панель",
-    "SHEDULER": "Планировщик"
+    "SHEDULER": "Планировщик",
+    "USERS": {
+      "TITLE": "Пользователи"
+    },
+    "ROLES": {
+      "TITLE": "Роли"
+    }
+  },
+  "MESSAGES": {
+    "NO_DATA": "Записей нет"
+  },
+  "TABLE": {
+    "ID": "Идентификатор",
+    "NAME": "Наименование",
+
+    "CREATE": "Добавть",
+    "UPDATE": "Изменить",
+    "DELETE": "Удалить",
+    "EXPORT_TO_PDF": "Выгрузка в PDF",
+    "EXPORT_TO_EXCEL": "Выгрузка в Excel"
   }
 }

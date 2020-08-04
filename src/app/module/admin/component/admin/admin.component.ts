@@ -1,7 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {AuthService} from '../../../../service/auth.service';
-import {DrawerSelectEvent} from '@progress/kendo-angular-layout';
-import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
+import {NavigationEnd, Router} from "@angular/router";
 import {environment} from "../../../../../environments/environment";
 import {TranslateService} from "@ngx-translate/core";
 
@@ -12,17 +11,21 @@ import {TranslateService} from "@ngx-translate/core";
 })
 export class AdminComponent implements OnInit {
 
-  @ViewChild('drawer') drawer
+  @ViewChild('drawer') drawer;
 
   public expanded = false;
   public selectedLanguage: string;
   public languages: { id: string, title: string }[] = [];
 
   public items: Array<any> = [
-    {text: 'ADMIN.DASHBOARD', icon: 'k-i-toggle-full-screen-mode', action: null, path: 'dashboard'},
-    {text: 'ADMIN.SHEDULER', icon: 'k-i-calendar', action: null, path: 'sheduler'},
+    {text: 'ADMIN.DASHBOARD', icon: 'k-icon item-icon k-i-toggle-full-screen-mode', action: null, path: 'dashboard'},
+    {text: 'ADMIN.SHEDULER', icon: 'k-icon item-icon k-i-calendar', action: null, path: 'sheduler'},
     {separator: true, action: null},
-    {text: 'ADMIN.EXIT', icon: 'k-i-logout', action: 'logout'},
+    {text: 'ADMIN.USERS.TITLE', icon: 'k-icon item-icon k-i-user', action: null, path: 'users'},
+    {text: 'ADMIN.ROLES.TITLE', icon: 'k-icon item-icon k-i-unlock', action: null, path: 'roles'},
+    // {text: 'ADMIN.ROLES', icon: 'user-lock', action: null, path: 'roles'},
+    {separator: true, action: null},
+    {text: 'ADMIN.EXIT', icon: 'k-icon item-icon k-i-logout', action: 'logout'},
   ];
 
   constructor(private authService: AuthService,
@@ -32,16 +35,16 @@ export class AdminComponent implements OnInit {
 
   ngOnInit(): void {
     const comp_arr: string[] = this.router.url.split('/');
-    const comp = comp_arr[comp_arr.length - 1]
+    const comp = comp_arr[comp_arr.length - 1];
     this.items.forEach(item => item.selected = (item.path === comp))
     this.router.events.subscribe((evt) => {
       if (!(evt instanceof NavigationEnd)) {
         return;
       }
       const comp_arr: string[] = evt.urlAfterRedirects.split('/');
-      const comp = comp_arr[comp_arr.length - 1]
-      this.items.forEach(item => item.selected = (item.path === comp))
-      this.drawer.items = this.items
+      const comp = comp_arr[comp_arr.length - 1];
+      this.items.forEach(item => item.selected = (item.path === comp));
+      this.drawer.items = this.items;
     });
 
     const lang = this.translateService.getDefaultLang();

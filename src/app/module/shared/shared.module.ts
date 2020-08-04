@@ -10,9 +10,23 @@ import {BreadcrumbsComponent} from './component/breadcrumbs/breadcrumbs.componen
 import {CommonModule} from "@angular/common";
 import {TranslateModule} from "@ngx-translate/core";
 import {RouterModule} from "@angular/router";
+import {ExcelModule, GridModule, PDFModule} from "@progress/kendo-angular-grid";
+import {PageTitleComponent} from './component/page-title/page-title.component';
+import {FaIconLibrary, FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {fas} from "@fortawesome/free-solid-svg-icons";
+import {far} from "@fortawesome/free-regular-svg-icons";
+import {KendoService} from "./service/kendo.service";
+import {StandartEditFormComponent} from "./component/standart-edit-form/standart-edit-form.component";
+import {DialogsModule} from "@progress/kendo-angular-dialog";
 
+// @ts-ignore
+// @ts-ignore
 @NgModule({
-  declarations: [BreadcrumbsComponent],
+  declarations: [
+    BreadcrumbsComponent,
+    PageTitleComponent,
+    StandartEditFormComponent
+  ],
   imports: [
     // Own
     CommonModule,
@@ -22,12 +36,18 @@ import {RouterModule} from "@angular/router";
     ReactiveFormsModule,
     // Http
     HttpClientModule,
+    //
+    FontAwesomeModule,
     // Kendo UI
     LayoutModule,
     ButtonsModule,
     InputsModule,
     LabelModule,
     DropDownsModule,
+    GridModule,
+    PDFModule,
+    ExcelModule,
+    DialogsModule,
     // Translation
     TranslateModule,
   ],
@@ -36,17 +56,30 @@ import {RouterModule} from "@angular/router";
     ReactiveFormsModule,
     // Http
     HttpClientModule,
+    //
+    FontAwesomeModule,
     // Kendo UI
     LayoutModule,
     ButtonsModule,
     InputsModule,
     LabelModule,
     DropDownsModule,
+    GridModule,
+    PDFModule,
+    ExcelModule,
+    DialogsModule,
     // Translation
     TranslateModule,
     // Components
     BreadcrumbsComponent,
-  ]
+    PageTitleComponent,
+    StandartEditFormComponent,
+    //
+  ],
+  providers: []
 })
 export class SharedModule {
+  constructor(library: FaIconLibrary) {
+    library.addIconPacks(fas, far);
+  }
 }

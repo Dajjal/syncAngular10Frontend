@@ -1,0 +1,142 @@
+<app-page-title title="ADMIN.USERS.TITLE" icon="k-icon item-icon k-i-user"></app-page-title>
+
+<kendo-grid style="height: calc(100vh - 81px - 49px - 2rem)"
+            [data]="view | async"
+            [loading]="view['loading']"
+            [skip]="state.skip"
+            [pageable]="true"
+            [pageSize]="state.take"
+            [sortable]="true"
+            [sort]="state.sort"
+            filterable="menu"
+            [filter]="state.filter"
+            [resizable]="true"
+            [selectable]="selectable_settings"
+
+            (dataStateChange)="dataStateChange($event)">
+  <kendo-grid-messages noRecords="{{ 'MESSAGES.NO_DATA' | translate }}">
+  </kendo-grid-messages>
+
+  <kendo-grid-column *ngFor="let col of columns"
+                     [field]="col['field']"
+                     [title]="col['title'] | translate"
+                     [width]="col['width']">
+  </kendo-grid-column>
+  <kendo-grid-column field="roles"
+                     filterable="false"
+                     [title]="'ADMIN.ROLES.TITLE' | translate"
+                     width="30%">
+    <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+      <div *ngFor="let role of dataItem['roles']">
+        <span>{{role.name}}</span>
+      </div>
+    </ng-template>
+  </kendo-grid-column>
+
+  <ng-template kendoPagerTemplate let-totalPages="totalPages" let-currentPage="currentPage">
+    <kendo-pager-prev-buttons></kendo-pager-prev-buttons>
+    <kendo-pager-info></kendo-pager-info>
+    <kendo-pager-input></kendo-pager-input>
+    <kendo-pager-next-buttons></kendo-pager-next-buttons>
+    <kendo-pager-page-sizes [pageSizes]="pageSizes"></kendo-pager-page-sizes>
+  </ng-template>
+
+  <ng-template kendoGridToolbarTemplate>
+    <div class="mb-2">
+      <button class="k-button" (click)="addHandler()" disabled>
+        <span class="k-icon k-i-insert-file"></span>
+        {{ 'TABLE.CREATE' | translate }}
+      </button>
+      <button class="k-button" (click)="editHandler()" disabled>
+        <span class="k-icon k-i-pencil"></span>
+        {{ 'TABLE.UPDATE' | translate }}
+      </button>
+      <button class="k-button" (click)="deleteHandler()" disabled>
+        <span class="k-icon k-i-delete"></span>
+        {{ 'TABLE.DELETE' | translate }}
+      </button>
+      <div class="d-inline-block ml-3">
+        <span class="grid-toolbar-splitter-icon icon-options-vertical"></span>
+      </div>
+      <!--<div class="btn-group ml-3" dropdown>
+        <button dropdownToggle type="button" class="k-button dropdown-toggle">
+          <span class="icon-settings mr-2"></span>
+          {{ 'base.VisibleColumns' | translate }}
+        </button>
+        <ul *dropdownMenu class="dropdown-menu" role="menu">
+          &lt;!&ndash; Казахский &ndash;&gt;
+          <li role="menuitem">
+            <a class="dropdown-item menuitem-dropdown-item"
+               (click)="grid_colums.name_kz.hidden = !grid_colums.name_kz.hidden">
+              <span *ngIf="grid_colums.name_kz.hidden" class="k-icon k-i-close"></span>
+              <span *ngIf="!grid_colums.name_kz.hidden" class="k-icon k-i-check"></span>
+              {{ 'base.GridName' | translate }} {{ 'base.NameKZ' | translate }}
+            </a>
+          </li>
+          &lt;!&ndash; Казахский (кирилица) &ndash;&gt;
+          <li role="menuitem">
+            <a class="dropdown-item menuitem-dropdown-item"
+               (click)="grid_colums.name_qz.hidden = !grid_colums.name_qz.hidden">
+              <span *ngIf="grid_colums.name_qz.hidden" class="k-icon k-i-close"></span>
+              <span *ngIf="!grid_colums.name_qz.hidden" class="k-icon k-i-check"></span>
+              {{ 'base.GridName' | translate }} {{ 'base.NameQZ' | translate }}
+            </a>
+          </li>
+          &lt;!&ndash; Русский &ndash;&gt;
+          <li role="menuitem">
+            <a class="dropdown-item menuitem-dropdown-item"
+               (click)="grid_colums.name_ru.hidden = !grid_colums.name_ru.hidden">
+              <span *ngIf="grid_colums.name_ru.hidden" class="k-icon k-i-close"></span>
+              <span *ngIf="!grid_colums.name_ru.hidden" class="k-icon k-i-check"></span>
+              {{ 'base.GridName' | translate }} {{ 'base.NameRU' | translate }}
+            </a>
+          </li>
+          &lt;!&ndash; Английский &ndash;&gt;
+          <li role="menuitem">
+            <a class="dropdown-item menuitem-dropdown-item"
+               (click)="grid_colums.name_en.hidden = !grid_colums.name_en.hidden">
+              <span *ngIf="grid_colums.name_en.hidden" class="k-icon k-i-close"></span>
+              <span *ngIf="!grid_colums.name_en.hidden" class="k-icon k-i-check"></span>
+              {{ 'base.GridName' | translate }} {{ 'base.NameEN' | translate }}
+            </a>
+          </li>
+          <section class="dropdown-divider"></section>
+          &lt;!&ndash; Код &ndash;&gt;
+          <li role="menuitem">
+            <a class="dropdown-item menuitem-dropdown-item"
+               (click)="grid_colums.code.hidden = !grid_colums.code.hidden">
+              <span *ngIf="grid_colums.code.hidden" class="k-icon k-i-close"></span>
+              <span *ngIf="!grid_colums.code.hidden" class="k-icon k-i-check"></span>
+              {{ 'base.Code' | translate }}
+            </a>
+          </li>
+        </ul>
+      </div>-->
+    </div>
+    <section>
+      <button kendoGridPDFCommand>
+        <span class="k-icon k-i-file-pdf"></span>
+        {{ 'TABLE.EXPORT_TO_PDF' | translate }}
+      </button>
+      <button kendoGridExcelCommand>
+        <span class="k-icon k-i-file-excel"></span>
+        {{ 'TABLE.EXPORT_TO_EXCEL' | translate }}
+      </button>
+    </section>
+  </ng-template>
+
+  <kendo-grid-pdf fileName="Users.pdf"
+                  [allPages]="true"
+                  paperSize="A4"
+                  [repeatHeaders]="true"
+                  [landscape]="true">
+    <kendo-grid-pdf-margin top="2cm" left="1cm" right="1cm" bottom="2cm"></kendo-grid-pdf-margin>
+    <ng-template kendoGridPDFTemplate let-pageNum="pageNum" let-totalPages="totalPages">
+    </ng-template>
+  </kendo-grid-pdf>
+
+  <kendo-grid-excel fileName="Users.xlsx"
+                    [fetchData]="allData"
+                    [filterable]="true"></kendo-grid-excel>
+
+</kendo-grid>

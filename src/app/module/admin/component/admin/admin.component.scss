@@ -1,3 +1,5 @@
+$k-drawer-wrapper: 250px;
+
 .custom-toolbar {
   width: 100%;
   background-color: #f6f6f6;
@@ -8,6 +10,9 @@
   color: #656565;
   height: 40px;
   display: flex;
+  position: fixed;
+  top: 0;
+  z-index: 10000;
 
   button {
     height: 40px;
@@ -37,5 +42,31 @@
 kendo-drawer-container {
   position: fixed;
   width: 100%;
-  height: 100%;
+  min-height: calc(100vh - 40px) !important;
+  margin-top: 40px;
+
+  /*kendo-drawer {
+    .k-drawer-wrapper {
+      ul.k-drawer-items {
+        height: calc(100vh - 130px);
+      }
+    }
+  }*/
+
+  /*kendo-drawer {
+    flex-basis: $k-drawer-wrapper !important;;
+
+    .k-drawer-wrapper {
+      width: $k-drawer-wrapper !important;
+    }
+  }*/
+
+  kendo-drawer-content {
+    min-height: calc(100vh - 40px);
+
+    section.content {
+      min-height: calc(100vh - 81px);
+    }
+  }
+
 }

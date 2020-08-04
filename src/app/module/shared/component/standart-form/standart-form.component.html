@@ -1,0 +1,167 @@
+<section class="flex-page animated fadeIn">
+
+  <app-page-title icon="standart_dict_icon" title="standart_dict_title"></app-page-title>
+
+  <kendo-grid [data]="view | async"
+
+              [sortable]="{
+                allowUnsort: true,
+                mode: 'single'
+              }"
+              [sort]="state.sort"
+
+              [filter]="state.filter"
+              filterable="menu"
+
+              [selectable]="selectable_settings"
+              [kendoGridSelectBy]="row_selection"
+              [selectedKeys]="grid_selected_rows"
+              (selectedKeysChange)="grid_row_selected($event)"
+
+              [pageable]="true"
+              [pageSize]="state.take"
+              [skip]="state.skip"
+
+              (dataStateChange)="dataStateChange($event)"
+
+              class="titled-view">
+
+    <kendo-grid-column field="name_kz"
+                       [hidden]="grid_colums.name_kz.hidden"
+                       title="{{ 'base.GridName' | translate }} {{ 'base.NameKZ' | translate }}">
+      <ng-template kendoGridHeaderTemplate>
+        {{ 'base.GridName' | translate }}<br/>{{ 'base.NameKZ' | translate }}
+      </ng-template>
+    </kendo-grid-column>
+
+    <kendo-grid-column field="name_qz"
+                       [hidden]="grid_colums.name_qz.hidden"
+                       title="{{ 'base.GridName' | translate }} {{ 'base.NameQZ' | translate }}">
+      <ng-template kendoGridHeaderTemplate>
+        {{ 'base.GridName' | translate }}<br/>{{ 'base.NameQZ' | translate }}
+      </ng-template>
+    </kendo-grid-column>
+
+    <kendo-grid-column field="name_ru"
+                       [hidden]="grid_colums.name_ru.hidden"
+                       title="{{ 'base.GridName' | translate }} {{ 'base.NameRU' | translate }}">
+      <ng-template kendoGridHeaderTemplate>
+        {{ 'base.GridName' | translate }}<br/>{{ 'base.NameRU' | translate }}
+      </ng-template>
+    </kendo-grid-column>
+
+    <kendo-grid-column field="name_en"
+                       [hidden]="grid_colums.name_en.hidden"
+                       title="{{ 'base.GridName' | translate }} {{ 'base.NameEN' | translate }}">
+      <ng-template kendoGridHeaderTemplate>
+        {{ 'base.GridName' | translate }}<br/>{{ 'base.NameEN' | translate }}
+      </ng-template>
+    </kendo-grid-column>
+
+    <kendo-grid-column field="code"
+                       [hidden]="grid_colums.code.hidden"
+                       width="150"
+                       title="{{ 'base.Code' | translate }}"></kendo-grid-column>
+
+    <ng-template kendoGridToolbarTemplate>
+      <section class="mb-2">
+        <button class="k-button" (click)="addHandler()">
+          <span class="k-icon k-i-insert-file"></span>
+          {{ 'base.Create' | translate }}
+        </button>
+        <button class="k-button" (click)="editHandler()" [disabled]="update_button_disabled">
+          <span class="k-icon k-i-pencil"></span>
+          {{ 'base.Update' | translate }}
+        </button>
+        <button class="k-button" (click)="deleteHandler()" [disabled]="delete_button_disabled">
+          <span class="k-icon k-i-delete"></span>
+          {{ 'base.Delete' | translate }}
+        </button>
+        <section class="d-inline-block ml-3">
+          <span class="grid-toolbar-splitter-icon icon-options-vertical"></span>
+        </section>
+        <section class="btn-group ml-3" dropdown>
+          <button dropdownToggle type="button" class="k-button dropdown-toggle">
+            <span class="icon-settings mr-2"></span>
+            {{ 'base.VisibleColumns' | translate }}
+          </button>
+          <ul *dropdownMenu class="dropdown-menu" role="menu">
+            <!-- Казахский -->
+            <li role="menuitem">
+              <a class="dropdown-item menuitem-dropdown-item"
+                 (click)="grid_colums.name_kz.hidden = !grid_colums.name_kz.hidden">
+                <span *ngIf="grid_colums.name_kz.hidden" class="k-icon k-i-close"></span>
+                <span *ngIf="!grid_colums.name_kz.hidden" class="k-icon k-i-check"></span>
+                {{ 'base.GridName' | translate }} {{ 'base.NameKZ' | translate }}
+              </a>
+            </li>
+            <!-- Казахский (кирилица) -->
+            <li role="menuitem">
+              <a class="dropdown-item menuitem-dropdown-item"
+                 (click)="grid_colums.name_qz.hidden = !grid_colums.name_qz.hidden">
+                <span *ngIf="grid_colums.name_qz.hidden" class="k-icon k-i-close"></span>
+                <span *ngIf="!grid_colums.name_qz.hidden" class="k-icon k-i-check"></span>
+                {{ 'base.GridName' | translate }} {{ 'base.NameQZ' | translate }}
+              </a>
+            </li>
+            <!-- Русский -->
+            <li role="menuitem">
+              <a class="dropdown-item menuitem-dropdown-item"
+                 (click)="grid_colums.name_ru.hidden = !grid_colums.name_ru.hidden">
+                <span *ngIf="grid_colums.name_ru.hidden" class="k-icon k-i-close"></span>
+                <span *ngIf="!grid_colums.name_ru.hidden" class="k-icon k-i-check"></span>
+                {{ 'base.GridName' | translate }} {{ 'base.NameRU' | translate }}
+              </a>
+            </li>
+            <!-- Английский -->
+            <li role="menuitem">
+              <a class="dropdown-item menuitem-dropdown-item"
+                 (click)="grid_colums.name_en.hidden = !grid_colums.name_en.hidden">
+                <span *ngIf="grid_colums.name_en.hidden" class="k-icon k-i-close"></span>
+                <span *ngIf="!grid_colums.name_en.hidden" class="k-icon k-i-check"></span>
+                {{ 'base.GridName' | translate }} {{ 'base.NameEN' | translate }}
+              </a>
+            </li>
+            <section class="dropdown-divider"></section>
+            <!-- Код -->
+            <li role="menuitem">
+              <a class="dropdown-item menuitem-dropdown-item"
+                 (click)="grid_colums.code.hidden = !grid_colums.code.hidden">
+                <span *ngIf="grid_colums.code.hidden" class="k-icon k-i-close"></span>
+                <span *ngIf="!grid_colums.code.hidden" class="k-icon k-i-check"></span>
+                {{ 'base.Code' | translate }}
+              </a>
+            </li>
+          </ul>
+        </section>
+      </section>
+      <section>
+        <button kendoGridPDFCommand>
+          <span class="k-icon k-i-file-pdf"></span>
+          {{ 'base.ExportToPDF' | translate }}
+        </button>
+        <button kendoGridExcelCommand>
+          <span class="k-icon k-i-file-excel"></span>
+          {{ 'base.ExportToExcel' | translate }}
+        </button>
+      </section>
+    </ng-template>
+
+    <kendo-grid-pdf fileName="{{ standart_dict_title | translate }}.pdf" [allPages]="true" pageSize="A4"
+                    [repeatHeaders]="true" [landscape]="true">
+      <kendo-grid-pdf-margin top="2cm" bottom="2cm" left="1cm" right="1cm"></kendo-grid-pdf-margin>
+      <ng-template kendoGridPDFTemplate let-pageNum="pageNum" let-totalPages="totalPages"></ng-template>
+    </kendo-grid-pdf>
+
+    <kendo-grid-excel fileName="{{ standart_dict_title | translate }}.xlsx"
+                      [fetchData]="allData"
+                      [filterable]="true"></kendo-grid-excel>
+
+  </kendo-grid>
+
+  <app-standart-dict-edit-form [model]="editDataItem"
+                               [isNew]="isNew"
+                               (save)="saveHandler($event)"
+                               (cancel)="cancelHandler()"></app-standart-dict-edit-form>
+
+</section>

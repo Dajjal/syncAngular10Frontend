@@ -4,6 +4,8 @@ import {AdminComponent} from './component/admin/admin.component';
 import {PageNotFoundComponent} from '../../component/page-not-found/page-not-found.component';
 import {DashboardComponent} from "./component/dashboard/dashboard.component";
 import {ShedulerComponent} from "./component/sheduler/sheduler.component";
+import {UsersComponent} from "./component/users/users.component";
+import {RolesComponent} from "./component/roles/roles.component";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'dashboard'},
@@ -26,6 +28,20 @@ const routes: Routes = [
         component: ShedulerComponent,
         data: {
           title: 'ADMIN.SHEDULER'
+        },
+      },
+      {
+        path: 'users',
+        component: UsersComponent,
+        data: {
+          title: 'ADMIN.USERS.TITLE'
+        },
+      },
+      {
+        path: 'roles',
+        component: RolesComponent,
+        data: {
+          title: 'ADMIN.ROLES.TITLE'
         },
       },
       // 404
