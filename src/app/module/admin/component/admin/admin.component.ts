@@ -34,7 +34,7 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const comp_arr: string[] = this.router.url.split('/');
+    const comp_arr = this.router.url.split('/');
     const comp = comp_arr[comp_arr.length - 1];
     this.items.forEach(item => item.selected = (item.path === comp))
     this.router.events.subscribe((evt) => {
