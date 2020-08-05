@@ -11,7 +11,7 @@
             filterable="menu"
             [filter]="state.filter"
             [resizable]="true"
-            [selectable]="selectable_settings"
+            [selectable]="selectableSettings"
 
             (dataStateChange)="dataStateChange($event)">
   <kendo-grid-messages noRecords="{{ 'MESSAGES.NO_DATA' | translate }}">

@@ -34,16 +34,16 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const comp_arr = this.router.url.split('/');
-    const comp = comp_arr[comp_arr.length - 1];
+    const compArr = this.router.url.split('/');
+    const comp = compArr[compArr.length - 1];
     this.items.forEach(item => item.selected = (item.path === comp))
     this.router.events.subscribe((evt) => {
       if (!(evt instanceof NavigationEnd)) {
         return;
       }
-      const comp_arr: string[] = evt.urlAfterRedirects.split('/');
-      const comp = comp_arr[comp_arr.length - 1];
-      this.items.forEach(item => item.selected = (item.path === comp));
+      const compArr2: string[] = evt.urlAfterRedirects.split('/');
+      const comp2 = compArr2[compArr2.length - 1];
+      this.items.forEach(item => item.selected = (item.path === comp2));
       this.drawer.items = this.items;
     });
 

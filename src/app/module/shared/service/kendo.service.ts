@@ -1,8 +1,8 @@
-import {BehaviorSubject, Observable} from "rxjs";
-import {GridDataResult} from "@progress/kendo-angular-grid";
-import {HttpClient} from "@angular/common/http";
-import {map, tap} from "rxjs/operators";
-import {Injectable, isDevMode} from "@angular/core";
+import {BehaviorSubject, Observable} from 'rxjs';
+import {GridDataResult} from '@progress/kendo-angular-grid';
+import {HttpClient} from '@angular/common/http';
+import {map, tap} from 'rxjs/operators';
+import {Injectable, isDevMode} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -44,11 +44,11 @@ export class KendoService extends BehaviorSubject<GridDataResult> {
     return this.http
       .post(`${this.BASE_URL}${tableName}/get`, state)
       .pipe(
-        map(response => (<GridDataResult>{
-          data: response['data'],
-          total: response['total'],
-          aggregates: response['aggregates']
-        })),
+        map(response => ({
+          total: response.total,
+          data: response.data,
+          aggregates: response.aggregates
+        } as GridDataResult)),
         tap(() => this.loading = false)
       );
   }

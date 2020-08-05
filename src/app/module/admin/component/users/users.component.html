@@ -11,8 +11,8 @@
             filterable="menu"
             [filter]="state.filter"
             [resizable]="true"
-            [selectable]="selectable_settings"
-
+            [selectable]="selectableSettings"
+            [groupable]="true"
             (dataStateChange)="dataStateChange($event)">
   <kendo-grid-messages noRecords="{{ 'MESSAGES.NO_DATA' | translate }}">
   </kendo-grid-messages>
@@ -22,10 +22,10 @@
                      [title]="col['title'] | translate"
                      [width]="col['width']">
   </kendo-grid-column>
-  <kendo-grid-column field="roles"
-                     filterable="false"
+  <kendo-grid-column [field]="'roles'"
+                     [filterable]="false"
                      [title]="'ADMIN.ROLES.TITLE' | translate"
-                     width="30%">
+                     [width]="'30%'">
     <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
       <div *ngFor="let role of dataItem['roles']">
         <span>{{role.name}}</span>

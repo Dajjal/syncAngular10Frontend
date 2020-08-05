@@ -5,8 +5,8 @@ import {AdminRoutingModule} from './admin-routing.module';
 import {SharedModule} from '../shared/shared.module';
 import {DashboardComponent} from './component/dashboard/dashboard.component';
 import {ShedulerComponent} from './component/sheduler/sheduler.component';
-import { UsersComponent } from './component/users/users.component';
-import { RolesComponent } from './component/roles/roles.component';
+import {UsersComponent} from './component/users/users.component';
+import {RolesComponent} from './component/roles/roles.component';
 
 
 @NgModule({

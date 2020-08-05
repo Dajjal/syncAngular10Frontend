@@ -13,9 +13,9 @@ export class StandartEditFormComponent {
   public integrated = true;
   public active = false;
   public editForm: FormGroup = new FormGroup({
-    'id': new FormControl(''),
+    id: new FormControl(''),
     //
-    'name': new FormControl('', Validators.required),
+    name: new FormControl('', Validators.required),
     /*'name_kz': new FormControl('', Validators.required),
     'name_qz': new FormControl('', Validators.required),
     'name_ru': new FormControl('', Validators.required),
@@ -71,7 +71,7 @@ export class StandartEditFormComponent {
     this.closeForm();
   }
 
-  private closeForm() {
+  private closeForm(): void {
     this.active = false;
     this.cancel.emit();
   }

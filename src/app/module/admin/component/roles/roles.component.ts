@@ -1,17 +1,16 @@
 import {Component, OnInit} from '@angular/core';
-import {AppRolesService} from "../../service/roles/app-roles.service";
+import {AppRolesService} from '../../service/roles/app-roles.service';
 import {
   DataStateChangeEvent,
   GridDataResult, SelectableSettings,
-} from "@progress/kendo-angular-grid";
-import {Observable} from "rxjs";
-import {State} from "@progress/kendo-data-query";
+} from '@progress/kendo-angular-grid';
+import {Observable} from 'rxjs';
+import {State} from '@progress/kendo-data-query';
 
 @Component({
   selector: 'app-roles',
   templateUrl: './roles.component.html',
-  styleUrls: ['./roles.component.scss'],
-  providers: [AppRolesService]
+  styleUrls: ['./roles.component.scss']
 })
 export class RolesComponent implements OnInit {
   public columns: any[] = [
@@ -28,7 +27,7 @@ export class RolesComponent implements OnInit {
     text: 'All',
     value: 'all'
   }];
-  public selectable_settings: SelectableSettings = {
+  public selectableSettings: SelectableSettings = {
     mode: 'single'
   };
   //
@@ -40,27 +39,32 @@ export class RolesComponent implements OnInit {
   constructor(private service: AppRolesService) {
     this.view = this.service;
   }
+
   ngOnInit(): void {
     this.service.query(this.state);
     this.allData = this.allData.bind(this);
   }
+
   //
   public allData = (): Observable<any> => {
     return this.service.queryAll(this.state);
   }
+
   //
   public dataStateChange(state: DataStateChangeEvent): void {
     console.log(state);
     this.state = state;
     this.service.query(state);
   }
+
   //
-  public addHandler() {
+  public addHandler(): void {
     this.editDataItem = {};
     this.isNew = true;
   }
+
   //
-  public saveHandler(item: any) {
+  public saveHandler(item: any): void {
     /*this.grid_selected_rows = [];
     this.update_button_disabled = true;
     this.delete_button_disabled = true;*/
@@ -81,7 +85,7 @@ export class RolesComponent implements OnInit {
     this.editDataItem = undefined;
   }
 
-  public cancelHandler() {
+  public cancelHandler(): void {
     this.editDataItem = undefined;
   }
 

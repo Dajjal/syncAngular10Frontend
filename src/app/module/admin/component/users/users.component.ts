@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {AppUsersService} from "../../service/users/app-users.service";
-import {Observable} from "rxjs";
-import {DataStateChangeEvent, GridDataResult, SelectableSettings} from "@progress/kendo-angular-grid";
-import {State} from "@progress/kendo-data-query";
-import {AppRolesService} from "../../service/roles/app-roles.service";
+import {Component, OnInit} from '@angular/core';
+import {AppUsersService} from '../../service/users/app-users.service';
+import {Observable} from 'rxjs';
+import {DataStateChangeEvent, GridDataResult, SelectableSettings} from '@progress/kendo-angular-grid';
+import {State} from '@progress/kendo-data-query';
 
 @Component({
   selector: 'app-users',
@@ -20,14 +19,14 @@ export class UsersComponent implements OnInit {
   public view: Observable<GridDataResult>;
   public state: State = {
     skip: 0,
-    take: 2,
+    take: 5,
     sort: []
   };
   public pageSizes = [1, 2, 5, 10, 20, {
     text: 'All',
     value: 'all'
   }];
-  public selectable_settings: SelectableSettings = {
+  public selectableSettings: SelectableSettings = {
     mode: 'single'
   };
 
@@ -39,6 +38,7 @@ export class UsersComponent implements OnInit {
     this.service.query(this.state);
     this.allData = this.allData.bind(this);
   }
+
   //
   public allData = (): Observable<any> => {
     return this.service.queryAll(this.state);

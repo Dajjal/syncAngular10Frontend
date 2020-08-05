@@ -7,17 +7,17 @@ import {DropDownsModule} from '@progress/kendo-angular-dropdowns';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {BreadcrumbsComponent} from './component/breadcrumbs/breadcrumbs.component';
-import {CommonModule} from "@angular/common";
-import {TranslateModule} from "@ngx-translate/core";
-import {RouterModule} from "@angular/router";
-import {ExcelModule, GridModule, PDFModule} from "@progress/kendo-angular-grid";
+import {CommonModule} from '@angular/common';
+import {TranslateModule} from '@ngx-translate/core';
+import {RouterModule} from '@angular/router';
+import {ExcelModule, GridModule, PagerModule, PDFModule} from '@progress/kendo-angular-grid';
 import {PageTitleComponent} from './component/page-title/page-title.component';
-import {FaIconLibrary, FontAwesomeModule} from "@fortawesome/angular-fontawesome";
-import {fas} from "@fortawesome/free-solid-svg-icons";
-import {far} from "@fortawesome/free-regular-svg-icons";
-import {KendoService} from "./service/kendo.service";
-import {StandartEditFormComponent} from "./component/standart-edit-form/standart-edit-form.component";
-import {DialogsModule} from "@progress/kendo-angular-dialog";
+import {FaIconLibrary, FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {fas} from '@fortawesome/free-solid-svg-icons';
+import {far} from '@fortawesome/free-regular-svg-icons';
+import {StandartEditFormComponent} from './component/standart-edit-form/standart-edit-form.component';
+import {DialogsModule} from '@progress/kendo-angular-dialog';
+import {BodyModule} from '@progress/kendo-angular-grid';
 
 // @ts-ignore
 // @ts-ignore
@@ -48,6 +48,8 @@ import {DialogsModule} from "@progress/kendo-angular-dialog";
     PDFModule,
     ExcelModule,
     DialogsModule,
+    BodyModule,
+    PagerModule,
     // Translation
     TranslateModule,
   ],
@@ -68,6 +70,8 @@ import {DialogsModule} from "@progress/kendo-angular-dialog";
     PDFModule,
     ExcelModule,
     DialogsModule,
+    BodyModule,
+    PagerModule,
     // Translation
     TranslateModule,
     // Components

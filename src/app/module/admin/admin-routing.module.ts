@@ -2,10 +2,10 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AdminComponent} from './component/admin/admin.component';
 import {PageNotFoundComponent} from '../../component/page-not-found/page-not-found.component';
-import {DashboardComponent} from "./component/dashboard/dashboard.component";
-import {ShedulerComponent} from "./component/sheduler/sheduler.component";
-import {UsersComponent} from "./component/users/users.component";
-import {RolesComponent} from "./component/roles/roles.component";
+import {DashboardComponent} from './component/dashboard/dashboard.component';
+import {ShedulerComponent} from './component/sheduler/sheduler.component';
+import {UsersComponent} from './component/users/users.component';
+import {RolesComponent} from './component/roles/roles.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'dashboard'},
